@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+<!-- begin::Head -->
+
+	<!-- begin::Head -->
+    {% extends 'base_2.html' %}
+    {% load static %}
+    {% block body %}
+
+<!-- end::Head -->
+
+<!-- begin::Body -->
+
+<body
+    class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
+
+    <!-- begin:: Page -->
+
+    <!-- begin:: Header Mobile -->
+    <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
+        <div class="kt-header-mobile__logo">
+            <a href="index.html">
+                <img alt="Logo" src="assets/media/logos/logo-light.png" />
+            </a>
+        </div>
+        <div class="kt-header-mobile__toolbar">
+            <button class="kt-header-mobile__toggler kt-header-mobile__toggler--left"
+                id="kt_aside_mobile_toggler"><span></span></button>
+            <button class="kt-header-mobile__toggler" id="kt_header_mobile_toggler"><span></span></button>
+            <button class="kt-header-mobile__topbar-toggler" id="kt_header_mobile_topbar_toggler"><i
+                    class="flaticon-more"></i></button>
+        </div>
+    </div>
+
+    <!-- end:: Header Mobile -->
+    <div class="kt-grid kt-grid--hor kt-grid--root">
+        <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+
+            <!-- begin:: Aside -->
+
+            <!-- Uncomment this to display the close button of the panel
+<button class="kt-aside-close " id="kt_aside_close_btn"><i class="la la-close"></i></button>
+-->
+<div class="kt-aside  kt-aside--fixed  kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside">
+
+    <!-- begin:: Aside -->
+   
+
+    <!-- end:: Aside -->
+
+    <!-- begin:: Aside Menu -->
+ {% include 'sidebar.html '%}
+    <!-- end:: Aside Menu -->
+</div>
+
+            <!-- end:: Aside -->
+            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+
+                <!-- begin:: Header -->
+                <div id="kt_header" class="kt-header kt-grid__item  kt-header--fixed ">
+
+
+                    <div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
+                        <div id="kt_header_menu"
+                            class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default ">
+                        </div>
+                    </div>
+
+
+                    <!-- begin:: Header Topbar -->
+                    <div class="kt-header__topbar">
+
+
+
+                        <!--begin: User Bar -->
+                        {% include 'admin.html' %}
+
+                        <!--end: User Bar -->
+                    </div>
+
+                    <!-- end:: Header Topbar -->
+                </div>
+
+                <!-- end:: Header -->
+                <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+
+                    <!-- begin:: Subheader -->
+                    <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+                        <div class="kt-container  kt-container--fluid ">
+                            <div class="kt-subheader__main">
+                                <h3 class="kt-subheader__title">
+                                    Contact-Info </h3>
+                                <span class="kt-subheader__separator kt-hidden"></span>
+                                <div class="kt-subheader__breadcrumbs">
+                                    <a href="/ERP/index" class="kt-subheader__breadcrumbs-home"><i
+                                            class="flaticon2-shelter"></i></a>
+                                    <span class="kt-subheader__breadcrumbs-separator"></span>
+                                    <div class="kt-subheader__breadcrumbs-link">
+                                        contact Management </div>
+                                    <span class="kt-subheader__breadcrumbs-separator"></span>
+                                    <a href="/ERP/user" class="kt-subheader__breadcrumbs-link">
+                                        contact </a>
+
+                                    <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end:: Content Head -->
+                   
+                    <!-- begin:: Content -->
+                    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+
+                       <!--Begin::Dashboard 4-->
+								<div class="kt-wizard-v4" id="kt_user_add_user" data-ktwizard-state="step-first ">
+									<!--begin::Portlet-->
+									<div class="kt-portlet kt-portlet--mobile">
+                                        <div class="kt-portlet__head kt-portlet__head--lg">
+                                            <div class="kt-portlet__head-label">
+                                                
+                                                <h3 class="kt-portlet__head-title">
+                                                    User
+                                                </h3>
+                                            </div>
+                                             
+                                        </div>
+                                        {% for message in messages %}
+
+                                        <div class="alert alert-primary">
+                                             {{message}}
+                                             
+                                          </div>
+                                          {% endfor %}
+										<div class="kt-portlet__body kt-portlet__body--fit p-5 customdatatable">
+                                            
+                                            <table id="table_id" class="display kt-datatable__table table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline">
+                                                <thead>
+                                                    <tr>
+                                                        <th> id  </th>
+
+                                                        <th> firstname </th>
+                                                        <th> lastname</th>
+                                                        <th>Email	</th>
+                                                        <th>tel no.	</th>
+                                                        <th> message</th>
+
+
+                                                        
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for i in contact %}
+                                                    <tr>
+                                                        <td>{{i.id}}</td>
+                                                        <td>{{i.firstname}}</td>
+                                                        <td>{{i.lastname}}</td>
+                                                        <td>{{i.email}}</td>
+                                                        <td>{{i.mob}}</td>
+                                                        <td>{{i.message}}</td>
+
+
+
+                                                       
+                                                        <td> 
+                                                           <!-- <a href="edit-user.html" class="kt-nav__link mr-3 py-1 px-4 btn-primary">
+                                                                                <i class="kt-nav__link-icon flaticon2-contract"></i>
+ 
+                                                                            </a> -->
+                                                         <a href="/ERP/del_contact/{{i.id}}" class="kt-nav__link  mr-5 py-1 px-4 btn-danger">
+                                                            <i class="kt-nav__link-icon flaticon2-trash "></i>
+                                                            <span class="kt-nav__link-text"></span>
+                                                        </a>
+                                                        </td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                    <!-- <tr>
+                                                        <td>1</td>
+                                                        <td>Row 1 Data 2</td>
+                                                        <td>Row 1 Data 1</td>
+                                                        <td>Row 1 Data 1</td>
+                                                        <td> 
+                                                         <a href="edit-user.html" class="kt-nav__link mr-3 py-1 px-4 btn-primary">
+                                                                                <i class="kt-nav__link-icon flaticon2-contract"></i>
+ 
+                                                                            </a>
+                                                         <a href="#" class="kt-nav__link  mr-5 py-1 px-4 btn-danger">
+                                                            <i class="kt-nav__link-icon flaticon2-trash "></i>
+                                                            <span class="kt-nav__link-text"></span>
+                                                        </a>
+                                                            
+                                                        </td>
+                                                    </tr> -->
+                                                    
+                                                    
+                                                </tbody>
+                                            </table>
+										</div>
+									</div>
+
+									<!--end::Portlet-->
+								</div>
+
+
+
+								<!--End::Dashboard 4-->
+                    </div>
+
+                    <!-- end:: Content -->
+                </div>
+
+                <!-- begin:: Footer -->
+               
+
+                <!-- end:: Footer -->
+            </div>
+        </div>
+    </div>
+
+    <!-- end:: Page -->
+
+
+
+    <!-- begin::Scrolltop -->
+    <div id="kt_scrolltop" class="kt-scrolltop">
+        <i class="fa fa-arrow-up"></i>
+    </div>
+
+
+
+
+    <!-- begin::Global Config(global config for global JS sciprts) -->
+ </body>
+ </html>
+ {% endblock body %}
